@@ -107,39 +107,41 @@ public class Frame {
 						right.nume=Integer.parseInt(t2.getText());
 						right.deno=Integer.parseInt(t5.getText());
 						right.simplify();
-
+						
+						//I don't want to use the original two
+						//so here are new two.
 						Fraction leftShadow=new Fraction(left);
 						Fraction rightShadow=new Fraction(right);
 
-					switch (method) {
-						case 1:
+					switch (method) {//judge the method
+						case 1:// +
 							leftShadow.add(rightShadow);
 							t3.setText(String.valueOf(leftShadow.nume));
 							t6.setText(String.valueOf(leftShadow.deno));
 							break;
-						case 2:
+						case 2:// -
 							leftShadow.minus(rightShadow);
 							t3.setText(String.valueOf(leftShadow.nume));
 							t6.setText(String.valueOf(leftShadow.deno));
 							break;
-						case 3:
+						case 3:// *
 							leftShadow.multiply(rightShadow);
 							t3.setText(String.valueOf(leftShadow.nume));
 							t6.setText(String.valueOf(leftShadow.deno));
 							break;
-						case 4:
+						case 4:// /
 							leftShadow.divide(rightShadow);
 							t3.setText(String.valueOf(leftShadow.nume));
 							t6.setText(String.valueOf(leftShadow.deno));
 							break;
 					}
-				}else{
+				}else{//when there's at least one blanket is null
 					methodShow.setText("Error");
 				}
 			}
 		});
 		
-		JButton clear=new JButton("C");
+		JButton clear=new JButton("C");//clear all
 		clear.addMouseListener(new MouseAdapter(){
 			public void mouseClicked(MouseEvent e){
 				method=0;
@@ -152,7 +154,7 @@ public class Frame {
 				t6.setText(null);
 			}
 		});
-		JButton help=new JButton("help");
+		JButton help=new JButton("help");//not a help,but a self-introduce
 		help.addMouseListener(new MouseAdapter(){
 			public void mouseClicked(MouseEvent e){
 				if(over==0){
@@ -160,9 +162,9 @@ public class Frame {
 					JFrame h=new JFrame("help");
 					h.setLocation(500, 200);
 					h.setSize(250,150);
-					JTextArea ta=new JTextArea();
-					ta.setText("Hello,you should remember that \n I am the second cutest \n and the second most lovely.\n And enjoy this Fraction Calculator!");
-					h.add(ta);
+					JTextArea tA=new JTextArea();
+					tA.setText("Hello,you should remember that \n I am the second cutest \n and the second most lovely.\n And enjoy this Fraction Calculator!");
+					h.add(tA);
 					h.setVisible(true);
 					h.addWindowListener(new WindowAdapter() {
 						public void windowClosing(WindowEvent e) {
@@ -173,7 +175,7 @@ public class Frame {
 				}
 			}
 		});
-		JPanel panButton=new JPanel();
+		JPanel panButton=new JPanel();//the fourth floor
 		panButton.setLayout(new FlowLayout());
 		panButton.add(add);
 		panButton.add(minus);
@@ -182,9 +184,7 @@ public class Frame {
 		panButton.add(equal);
 		panButton.add(clear);
 		panButton.add(help);
-		
-		
-		
+
 		f.add(panNumerator);
 		f.add(panFractionalLine);
 		f.add(panDenominator);
